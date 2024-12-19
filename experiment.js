@@ -21,17 +21,32 @@ const sessionId = jsPsych.data.getURLVariable('SESSION_ID');
 const filename = `${participantId}` + "_" + `${studyId}` + "_" + `${sessionId}.csv`;
 
 // Randomize assignment of condition:
-let pluralCondition = jsPsych.randomization.sampleWithoutReplacement(['self', 'other'], 1)[0];
+let genderCondition = jsPsych.randomization.sampleWithoutReplacement(['male', 'female'], 1)[0];
+
 
 jsPsych.data.addProperties({
   participantId: participantId,
   studyId: studyId,
   sessionId: sessionId,
-  pluralCondition: pluralCondition
+  genderCondition: genderCondition
 });
 
-// Options
-const valueOpinionOptions = ['Yes', 'Somewhat', 'No'];
+// Define New Information and Update Trial
+const newInformation = [
+  "Lied about a co-worker's poor work ethic to their boss for personal gain",
+  "Publicly mocked their sister for stuttering",
+  "Tried to steal clothes from a department store but got caught by security",
+  "Is known for flirting with friends' partners",
+  "Lied to their employer about their productivity",
+  "Lied to an investigator about a crime",
+  "Initiated an argument with a friend in a crowded public space",
+  "Feels entitled to a lot more than they get",
+  "Lost their temper at the barista",
+  "Is known for pointing out everyone's shortcomings",
+  "Refused to attend the funeral of a relative they disliked",
+  "Never picks up after their dog while out on a walk",
+  "Waited to the last moment to cancel plans with a friend"
+];
 
 // Political Ideology
 const politicalResponses = [
@@ -42,44 +57,6 @@ const politicalResponses = [
   "5",
   "6",
   "7 (Extremely conservative)",
-];
-
-var likert_scale = [
-  'Not at all important', 
-  'Slightly important', 
-  'Moderately important', 
-  'Very important', 
-  'Extremely important'
-];
-
-var disagree_scale = [
-  '1 = Strongly disagree', 
-  '2', 
-  '3', 
-  '4', 
-  '5',
-  '6',
-  '7 = Strongly agree'
-];
-
-
-var rule_scale = [
-  '1 = None at all', 
-  '2', 
-  '3', 
-  '4', 
-  '5 = A great deal'
-];
-
-
-var true_scale = [
-  '1 = Completely disagree', 
-  '2', 
-  '3', 
-  '4 = Neither agree nor disagree', 
-  '5', 
-  '6', 
-  '7 = Completely agree'
 ];
 
 // attention check
@@ -93,7 +70,8 @@ const attention_scale = [
   "7 = Yes, I paid full attention. You should use my data",
 ];
 
-// ENTER FULLSCREEN //
+////////////////////////////////////////////////  FIRST PAGE
+// ENTER FULLSCREEN 
 const enterFullscreen = {
   type: jsPsychFullscreen,
   name: 'enter_fullscreen',
@@ -103,6 +81,7 @@ const enterFullscreen = {
 
 timeline.push(enterFullscreen)
 
+////////////////////////////////////////////////////////// Second Page
 // CONSENT FORM //
 const consentForm = {
   type: jsPsychSurveyMultiChoice,
@@ -190,490 +169,76 @@ const consentForm = {
 
 timeline.push(consentForm);
 
-// Individual INSTRUCTIONS //
-const instructionsSelf = {
+///////////////////////////////////////////////////// THIRD PAGE - FIFTH PAGE
+// Define Instructions
+const instructions = {
   type: jsPsychInstructions,
   pages: [
-    `<h2><strong>Instructions</strong></h2>
-     <p style="text-align: left;">
-       Welcome to the experiment! In this study, we will ask you about the kinds of things people can pursue in their lives. 
-     </p>`,
-
-    `<p style="text-align: left;">
-      Imagine this circle represents all the time a single person has over the course of their life:
-     </p>
-     <img src="images/piealone.jpg" style="display: block; margin: 0 auto; width: 50%;">
-     `,
-
-     `<p style="text-align: left;">
-     We want you to think about creating an ideal life by partitioning up the circle: 
-     </p>
-     
-     <img src="images/piealone2.jpg" style="display: block; margin: 0 auto; width: 30%;">
-
-     <p style="text-align: left;">
-     This circle represents the amount of a person's life they dedicate to different pursuits. Your task is to decide <b>how much of a person's life</b> they should dedicate to different pursuits. 
-     </p>
-
-     <p style="text-align: left;">
-     These pursuits include:
-     <ul style="text-align: left;">
-       <li><b>Civic Life</b> (pursuing political action, participating in collective decision-making, managing shared resources, engaging with your political community)</li>
-       <li><b>Aesthetic & Intellectual Expression</b> (pursuing and passing on knowledge, making and seeing art, seeking truth, playing or listening to music, perfecting a sport)</li>
-       <li><b>Morality</b> (pursuing justice, promoting fairness, protecting others from risks and threats, participating in religious or spiritual practices)</li>
-       <li><b>Play & Leisure</b> (pursuing enjoyment for its own sake, engaging in play, having hobbies and recreational activities, taking time for leisure)</li>
-       <li><b>Relationships</b> (pursuing connection and interaction with other people and animals, feeling close to others, maintaining ties with friends and family)</li>
-     </ul>
-     </p>`,
-
-   `<p style="text-align: left;">
-    You will see a pie chart like the one below and be asked to edit it so that it matches how you think a person should ideally divide up these pursuits in their life. 
-    </p>
-    <p style="text-align: left;"> Here is an example where only two values are selected, Civic Life and Relationships, and the others are set to zero:</p> 
- 
-    <img src="images/piegroups.jpg" alt="Example Pie Chart" style="display: block; margin: 0 auto; width: 30%;">`,
-  
-    `<p style="text-align: left;"> Here is an example where one pursuit, Relationships, is given a large value and the others weighted equally:</p> 
- 
-    <img src="images/piegroups2.jpg" alt="Example Pie Chart" style="display: block; margin: 0 auto; width: 40%;">`,
-
-    `<p style="text-align: left;">
-    Now it is time to edit the circle so that it matches what you think a person should pursue. You may not see all the things you value, 
-    or see some that you value very little. That is okay.  
-    </p>
-    
-    <p style="text-align: left;">Your task is to adjust the pursuits you are shown to match YOUR ideal. 
-    </p>`,
-
-    `<p style="text-align: left;">
-    You will start with a pie chart where none of the pursuits have been assigned value. Because of this, the pie chart will not be visible until you assign values. The values of the pie chart must equal exactly 100. 
-    </p>`,
-
-
-    `<p style="text-align: left;">
-    Your task will begin on the next page. 
-    </p>`
-
+    `<div style="margin-top: 100px; text-align: center;">
+       <p>Welcome to the study. In this experiment, you'll be asked to make judgments about people based on very limited information.</p>
+     </div>`,
+    `<div style="margin-top: 100px; text-align: center;">
+       <p>You will use the slider to indicate your responses to both questions. Please click 'Next' to begin.</p>
+     </div>`
   ],
-  show_clickable_nav: true,
+  show_clickable_nav: true
 };
 
-// Society/Other people INSTRUCTIONS //
-const instructionsOther = {
+const instructions_step2 = {
   type: jsPsychInstructions,
   pages: [
-    `<h2><strong>Instructions</strong></h2>
-     <p style="text-align: left;">
-      Welcome to the experiment! In this study, we will ask you about the kinds of things people can pursue in their lives. 
-     </p>`,
-
-    `<p style="text-align: left;">
-     Imagine this circle represents all the time people in a society have over the course of their lives:
-
-     </p>
-     <img src="images/piealone.jpg" style="display: block; margin: 0 auto; width: 50%;">
-     `,
-
-     `<p style="text-align: left;">
-     We want you to think about creating an ideal society by partitioning up the circle: 
-     </p>
-     
-     <img src="images/piealone2.jpg" style="display: block; margin: 0 auto; width: 30%;">
-     
-     <p style="text-align: left;">
-     In a society, it is possible that some people dedicate themselves to some pursuits, while others dedicate themselves to other pursuits. 
-     We want to know how you think people in an ideal society should divide up these pursuits. 
-     </p>
-
-     <p style="text-align: left;">
-     These pursuits include:
-     <ul style="text-align: left;">
-       <li><b>Civic Life</b> (pursuing political action, participating in collective decision-making, managing shared resources, engaging with your political community)</li>
-       <li><b>Aesthetic & Intellectual Expression</b> (pursuing and passing on knowledge, making and seeing art, seeking truth, playing or listening to music, perfecting a sport)</li>
-       <li><b>Morality</b> (pursuing justice, promoting fairness, protecting others from risks and threats, participating in religious or spiritual practices)</li>
-       <li><b>Play & Leisure</b> (pursuing enjoyment for its own sake, engaging in play, having hobbies and recreational activities, taking time for leisure)</li>
-       <li><b>Relationships</b> (pursuing connection and interaction with other people and animals, feeling close to others, maintaining ties with friends and family)</li>
-     </ul>
-     </p>`,
-
-     `<p style="text-align: left;">
-    You will see a pie chart like the one below and be asked to edit it so that it matches how you think people in an ideal society should divide up these pursuits.
-    </p>
-    
-    <p style="text-align: left;"> Here is an example where only two values are selected, Civic Life and Relationships, and the others are set to zero:</p> 
- 
-    <img src="images/piegroups.jpg" alt="Example Pie Chart" style="display: block; margin: 0 auto; width: 30%;">`,
-  
-    `<p style="text-align: left;"> Here is an example where one pursuit, Relationships, is given a large value and the others weighted equally:</p> 
- 
-    <img src="images/piegroups2.jpg" alt="Example Pie Chart" style="display: block; margin: 0 auto; width: 40%;">`,
-
-    `<p style="text-align: left;">
-    Now it is time to edit the circle so that it matches what you think people in an ideal society should pursue. You may not see all the things you value, 
-    or see some that you value very little. That is okay.    
-    </p>
-
-    <p style="text-align: left;">Your task is to adjust the pursuits you are shown to match YOUR ideal society. 
-
-    </p>`,
-
-    `<p style="text-align: left;">
-    You will start with a pie chart where none of the pursuits have been assigned value. Because of this, the pie chart will not be visible until you assign values. The values of the pie chart must equal exactly 100. 
-    </p>`,
-
-
-    `<p style="text-align: left;">
-    Your task will begin on the next page. 
-    </p>`
-
+    `<div style="margin-top: 100px; text-align: center;">
+       <p>Next, you will see an action. Please consider how this new information would affect your judgment of the person you just rated. The slider will start at your last rating.</p>
+     </div>`
   ],
-  show_clickable_nav: true,
+  show_clickable_nav: true
 };
 
-// TASK 
-let proportions = {
-  cat1: 0,
-  cat2: 0,
-  cat3: 0,
-  cat4: 0,
-  cat5: 0
-};
+// Build Timeline
+timeline.push(instructions);
 
-// Categories and their corresponding labels and colors
-const categories = [
-  { id: 'cat1', label: 'Aesthetic & Intellectual Expression', color: '#DF857A' },
-  { id: 'cat2', label: 'Civic Life', color: '#8094A6' },
-  { id: 'cat3', label: 'Morality', color: '#E7B268' },
-  { id: 'cat4', label: 'Play & Leisure', color: '#936D7D' },
-  { id: 'cat5', label: 'Relationships', color: '#1B3022' }
-];
+// Define Morality Slider Trial
 
-// Function to shuffle the categories
-function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+// Initialize Global Variable for Last Slider Response
+let lastMoralitySliderValue = []; // Indicates no value set yet
+
+// First Slider Trial
+const moralitySlider = {
+  type: jsPsychHtmlSliderResponse,
+  stimulus: '<p>How morally good or bad do you think the average person is?</p>',
+  labels: ['Extremely morally bad', 'Neutral', 'Extremely morally good'],
+  min: 0,
+  max: 100,
+  start: 50, // Default starting value
+  data: { trial_type: "morality_slider" },
+  on_finish: function (data) {
+    lastMoralitySliderValue = data.response; // Save the slider response globally
   }
-  return array;
-}
+};
 
-// Shuffle the categories
-const shuffledCategories = shuffle(categories);
-
-// Store the order of the labels
-const labelOrder = shuffledCategories.map(cat => cat.label);
-
-const pieChartTrial = {
-  type: jsPsychHtmlKeyboardResponse,
-  stimulus: `
-  <div style="text-align: center; margin-bottom: 5px;">
-      <b>Adjust the amount of each of the following pursuits:</b>
-      <ul style="text-align: left; font-size: 14px; margin-top: 5px;">
-       <li><b>Civic Life</b> (pursuing political action, participating in collective decision-making, managing shared resources, engaging with your political community)</li>
-       <li><b>Aesthetic & Intellectual Expression</b> (pursuing and passing on knowledge, making and seeing art, seeking truth, playing or listening to music, perfecting a sport)</li>
-       <li><b>Morality</b> (pursuing justice, promoting fairness, protecting others from risks and threats, participating in religious or spiritual practices)</li>
-       <li><b>Play & Leisure</b> (pursuing enjoyment for its own sake, engaging in play, having hobbies and recreational activities, taking time for leisure)</li>
-       <li><b>Relationships</b> (pursuing connection and interaction with other people and animals, feeling close to others, maintaining ties with friends and family)</li>
-      </ul> 
-    </div>
-
-    <div id="pieChartContainer" style="width: 400px; height: 400px; margin: 0 auto;">
-      <canvas id="pieChart"></canvas>
-    </div>
-    <div id="inputContainer" style="width: 400px; margin: 0 auto; text-align: left;">
-      ${shuffledCategories.map(cat => `
-        <label for="${cat.id}">${cat.label}:</label>
-        <input type="number" id="${cat.id}" value="0" min="0" max="100"><br>
-      `).join('')}
-    </div>
-    <p></p>
-    <p id="error-message" style="color: red;"></p>
-    <p><i>The piechart will update when the values <b>equal 100</b>.</i></p>
-    <p>Press the <b>space bar</b> when you are done adjusting the proportions to continue.</p>
-  `,
-  choices: [' '],
-  on_load: function() {
-    var ctx = document.getElementById('pieChart').getContext('2d');
-    var pieChart = new Chart(ctx, {
-      type: 'pie',
-      data: {
-        labels: shuffledCategories.map(cat => cat.label),
-        datasets: [{
-          data: [0, 0, 0, 0, 0],
-          backgroundColor: shuffledCategories.map(cat => cat.color) // Updated with hex codes
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false
-      }
-    });
-
-    function updateChart() {
-      var data = shuffledCategories.map(cat => 
-        parseInt(document.getElementById(cat.id).value));
-
-      var total = data.reduce((a, b) => a + b, 0);
-
-      if (total === 100) {
-        pieChart.data.datasets[0].data = data;
-        pieChart.update();
-        document.getElementById('error-message').innerText = '';
-        // Store the values in the global variable
-        proportions = {
-          cat1: data[shuffledCategories.findIndex(cat => cat.id === 'cat1')],
-          cat2: data[shuffledCategories.findIndex(cat => cat.id === 'cat2')],
-          cat3: data[shuffledCategories.findIndex(cat => cat.id === 'cat3')],
-          cat4: data[shuffledCategories.findIndex(cat => cat.id === 'cat4')],
-          cat5: data[shuffledCategories.findIndex(cat => cat.id === 'cat5')]
-        };
-      } else {
-        document.getElementById('error-message').innerText = 'Total proportion must be exactly 100.';
-      }
-    }
-
-    document.querySelectorAll('#inputContainer input').forEach(input => {
-      input.addEventListener('input', updateChart);
-    });
+// Second Slider Trial
+const infoTrial = {
+  type: jsPsychHtmlSliderResponse,
+  stimulus: function () {
+    const randomInfo = jsPsych.randomization.sampleWithoutReplacement(newInformation, 1)[0];
+    return `<p>Now imagine this person did the following action:</p><p><strong>${randomInfo}</strong></p>`;
   },
-  on_finish: function(data) {
-    jsPsych.data.addDataToLastTrial({
-      proportions: proportions,
-      labelOrder: labelOrder
-    });
-  }
+  labels: ['Extremely morally bad', 'Neutral', 'Extremely morally good'],
+  min: 0,
+  max: 100,
+  slider_start: function () {
+    return lastMoralitySliderValue !== null ? lastMoralitySliderValue : 50; // Default to 50 if undefined
+  },
+  data: { trial_type: "info_slider" }
 };
 
-// Add the pie chart trial to the timeline based on the condition
-if (pluralCondition === 'self') {
-  timeline.push(instructionsSelf, pieChartTrial);
-} else if (pluralCondition === 'other') {
-  timeline.push(instructionsOther, pieChartTrial);
-}
+// Build Timeline
+timeline.push(moralitySlider);
+timeline.push(instructions_step2);
+timeline.push(infoTrial); 
 
-///////////////////// Add follow up questions 
-
-//open ended
-var explain = {
-  type: jsPsychSurveyText,
-  questions: [
-    {prompt: 'Were there any pursuits you think should have been included?', name: 'pieexplain', rows: 5}  
-  ],
-  on_finish: function (data) {
-    let explainData = data.response;
-
-    explainData = {
-      feedback: explainData['explain']
-    };
-
-    jsPsych.data
-      .getDataByTimelineNode(jsPsych.getCurrentTimelineNodeID())
-      .addToAll(explainData);
-  }
-}
-
-//timeline.push(explain); //remove this question 
-
-// rule breaking questions
-
-var rulebreak = {
-  type: jsPsychSurveyLikert,
-  questions: [
-    {prompt: "How much rule breaking is required to truly pursue <b>aesthetic & intellectual expression</b>?", name: 'ruleexpression', labels: rule_scale, required: true},
-    {prompt: "How much rule breaking is required to truly pursue <b>morality</b>?", name: 'rulemorality', labels: rule_scale, required: true},
-    {prompt: "How much rule breaking is required to truly pursue <b>play & leisure</b>?", name: 'ruleplay', labels: rule_scale, required: true},
-    {prompt: "How much rule breaking is required to truly pursue <b>relationships</b>?", name: 'rulerelationship', labels: rule_scale, required: true},
-    {prompt: "How much rule breaking is required to truly pursue <b>civic life</b>?", name: 'rulecivic', labels: rule_scale, required: true}
-  ],
-  preamble:"For each of the following, please rate how much you believe breaking rules is necessary for someone to truly pursue each of the values below.",
-  randomize_question_order: true,
-  on_finish: function(data) {
-    let rulebreakData = data.response;
-
-    rulebreakData = {
-      rule_expression: rulebreakData['ruleexpression'],
-      rule_morality: rulebreakData['rulemorality'],
-      rule_play: rulebreakData['ruleplay'],
-      rule_relationship: rulebreakData['rulerelationship'],
-      rule_civic: rulebreakData['rulecivic']
-    };
-
-    jsPsych.data
-      .getDataByTimelineNode(jsPsych.getCurrentTimelineNodeID())
-      .addToAll(rulebreakData);
-  }
-};
-
-timeline.push(rulebreak);
-
-// true self questions
-
-var trueself = {
-  type: jsPsychSurveyLikert,
-  questions: [
-    {prompt: "To be excellent at <b>aesthetic & intellectual expression</b>, one has to be true to who they are deep down.", name: 'trueexpression', labels: true_scale, required: true},
-    {prompt: "To be excellent at <b>morality</b>, one has to be true to who they are deep down.", name: 'truemorality', labels: true_scale, required: true},
-    {prompt: "To be excellent at <b>play & leisure</b>, one has to be true to who they are deep down.", name: 'trueplay', labels: true_scale, required: true},
-    {prompt: "To be excellent at <b>relationships</b>, one has to be true to who they are deep down.", name: 'truerelationship', labels: true_scale, required: true},
-    {prompt: "To be excellent at <b>civic life</b>, one has to be true to who they are deep down.", name: 'truecivic', labels: true_scale, required: true}
-  ],
-  preamble:"Please rate how much you agree or disagree with each of the following statements:",
-  randomize_question_order: true,
-  on_finish: function(data) {
-    let trueselfData = data.response;
-
-    trueselfData = {
-      true_expression: trueselfData['trueexpression'],
-      true_morality: trueselfData['truemorality'],
-      true_play: trueselfData['trueplay'],
-      true_relationship: trueselfData['truerelationship'],
-      true_civic: trueselfData['truecivic']
-    };
-
-    jsPsych.data
-      .getDataByTimelineNode(jsPsych.getCurrentTimelineNodeID())
-      .addToAll(trueselfData);
-  }
-};
-
-timeline.push(trueself);
-
-// other questions
-var whichone = {
-  type: jsPsychSurveyMultiChoice,
-  questions: [
-    {
-      prompt: "In your life now, which of the pursuits would you say YOU most pursue in your life?", 
-      name: 'youvalue', 
-      options: ['Aesthetic & Intellectual Expression', 'Civic Life', 'Morality', 'Play & Leisure', 'Relationships' ], 
-      required: true,
-      horizontal: true,
-    },
-
-    {
-      prompt: "Which of the pursuits should YOU most pursue in your life?", 
-      name: 'shouldvalue', 
-      options: ['Aesthetic & Intellectual Expression', 'Civic Life', 'Morality', 'Play & Leisure', 'Relationships' ], 
-      required: true,
-      horizontal: true
-    },
-
-    {
-      prompt: "Which of the pursuits should OTHERS spend most time pursuing in their lives?", 
-      name: 'othersshould', 
-      options: ['Aesthetic & Intellectual Expression', 'Civic Life', 'Morality', 'Play & Leisure', 'Relationships' ], 
-      required: true,
-      horizontal: true
-    }
-  ],
-  on_finish: function (data) {
-    let whichoneData = data.response;
-
-    whichoneData = {
-      youvalue: whichoneData['youvalue'],
-      shouldvalue: whichoneData['shouldvalue'],
-      othersshould: whichoneData['othersshould']
-    };
-
-    jsPsych.data
-      .getDataByTimelineNode(jsPsych.getCurrentTimelineNodeID())
-      .addToAll(whichoneData);
-  }
-};
-
-timeline.push(whichone);
-
-var ourmfq = {
-  type: jsPsychSurveyLikert,
-  questions: [
-    {prompt: "Aesthetic & Intellectual Expression", name: 'Self-expression1', labels: likert_scale, required: true},
-    {prompt: "Morality", name: 'Morality1', labels: likert_scale, required: true},
-    {prompt: "Civic Life", name: 'Civic1', labels: likert_scale, required: true},
-    {prompt: "Play & Leisure", name: 'Play1', labels: likert_scale, required: true},
-    {prompt: "Relationships", name: 'Relationship1', labels: likert_scale, required: true}
-
-  ],
-  preamble:"In this section, please rate each item on how important it would be to you when trying to decide if a pursuit was valuable or not.",
-  randomize_question_order: true,
-  required: true,
-  on_finish: function(data) {
-    let mfqData = data.response;
-
-    mfqData = {
-      self_expression_importance: mfqData['Self-expression1'],
-      morality_importance: mfqData['Morality1'],
-      civic_importance: mfqData['Civic1'],
-      play_importance: mfqData['Play1'],
-      relationship_importance: mfqData['Relationship1']
-    };
-
-    jsPsych.data
-      .getDataByTimelineNode(jsPsych.getCurrentTimelineNodeID())
-      .addToAll(mfqData);
-  }
-};
-
-timeline.push(ourmfq);
-
-var fallapart = {
-  type: jsPsychSurveyLikert,
-  questions: [
-    {prompt: "If too many people pursue <b>aesthetic & intellectual expression</b> society will fall apart", name: 'Self-expression2', labels: disagree_scale, required: true},
-    {prompt: "If too many people pursue <b>morality</b> society will fall apart", name: 'Morality2', labels: disagree_scale, required: true},
-    {prompt: "If too many people pursue <b>civic life</b> society will fall apart", name: 'Civic2', labels: disagree_scale, required: true},
-    {prompt: "If too many people pursue <b>play & leisure</b> society will fall apart", name: 'Play2', labels: disagree_scale, required: true},
-    {prompt: "If too many people pursue <b>relationships</b> society will fall apart", name: 'Relationship2', labels: disagree_scale, required: true}
-  ],
-  preamble:"For each of the following, please rate how much you agree or disagree with the statement",
-  randomize_question_order: true,
-  required: true,
-  on_finish: function(data) {
-    let fallapartData = data.response;
-
-    fallapartData = {
-      self_expression_fallapart: fallapartData['Self-expression2'],
-      morality_fallapart: fallapartData['Morality2'],
-      civic_fallapart: fallapartData['Civic2'],
-      play_fallapart: fallapartData['Play2'],
-      relationship_fallapart: fallapartData['Relationship2']
-    };
-
-    jsPsych.data
-      .getDataByTimelineNode(jsPsych.getCurrentTimelineNodeID())
-      .addToAll(fallapartData);
-  }
-};
-
-timeline.push(fallapart);
-
-//pilot
-var pilotqs = {
-  type: jsPsychSurveyMultiChoice,
-  questions: [
-    {
-      prompt: "Imagine that you ran into an acquaintance from your neighborhood at a coffee shop on the other side of town. You really like this person and want to get to know them better, but you don't have their phone number. Where do you think you'd have the strongest feeling that you'd run into them again?", 
-      name: 'pilot', 
-      options: ['Your neighborhood',  'The coffee shop'], 
-      required: true,
-      horizontal: true
-    }
-  ],
-  on_finish: function(data) {
-    let pilotData = data.response;
-
-    pilotData = {
-      pilot_choice: pilotData['pilot']
-    };
-
-    jsPsych.data
-      .getDataByTimelineNode(jsPsych.getCurrentTimelineNodeID())
-      .addToAll(pilotData);
-  }
-};
-
-//timeline.push(pilotqs);
-
-/////////////////////////////////////////////// DEMOGRAPHICS ///////////////////////////////////////////////
+/////////////////////////////////////////////// SIXTH PAGE 
+// DEMOGRAPHICS
 const demographicsQuestions = {
   type: jsPsychSurveyHtmlForm,
   preamble: `<p class="jspsych-survey-multi-choice-preamble">
@@ -930,7 +495,7 @@ const feedback = {
       name: 'feedback',
       prompt:
         `<p class="jspsych-survey-multi-choice-question" style='text-align: "center !important;"'>
-          Do you have any additional comments? We appreciate any and all feedback!
+          Please leave any additional comments or feedback here.
         </p>`,
       rows: 10
     }
@@ -963,7 +528,7 @@ timeline.push(exitFullscreen);
 const save_data = {
    type: jsPsychPipe,
    action: "save",
-   experiment_id: "9VDNqbtQWyZk", //updated as of june 3
+   experiment_id: "HgPpN2eeFI0Q", //updated as of dec 19
    filename: filename,
    data_string: () => jsPsych.data.get().csv(),
    on_finish: function (data) {
@@ -986,7 +551,7 @@ const save_data = {
        </p>`
      );
      setTimeout(function () {
-       window.location.href = "https://app.prolific.com/submissions/complete?cc=C14TE6JM"; //this is updated as of july15 for study 1
+       window.location.href = "https://app.prolific.com/submissions/complete?cc=CM39EODG"; //this is updated as of cec 19 for pilot
      }, 5000)
    }
  };

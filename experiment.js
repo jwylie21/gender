@@ -207,9 +207,9 @@ const moralitySlider = {
   type: jsPsychHtmlSliderResponse,
   stimulus: function () {
     return `<div style="margin-top: 100px; text-align: center;">
-      <p>How morally good or bad do you think the average ${
+      <p>How morally good or bad do you think the <b>average ${
         genderCondition === 'male' ? 'man' : 'woman'
-      } is?</p>
+      }</b> is?</p>
     </div>`;
   },
   labels: ['Extremely morally bad', 'Neutral', 'Extremely morally good'],
@@ -228,9 +228,9 @@ const infoTrial = {
   type: jsPsychHtmlSliderResponse,
   stimulus: function () {
     const randomInfo = jsPsych.randomization.sampleWithoutReplacement(newInformation, 1)[0];
-    return `<p>Now imagine that the average ${
+    return `<p>Now imagine that the <b>average ${
         genderCondition === 'male' ? 'man' : 'woman'
-      } did the following action:</p>
+      }</b> did the following action:</p>
       <p><strong>${randomInfo}</strong></p>`;
   },
   labels: ['Extremely morally bad', 'Neutral', 'Extremely morally good'],

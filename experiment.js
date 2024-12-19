@@ -178,7 +178,7 @@ const instructions = {
        <p>Welcome to the study. In this experiment, you'll be asked to make judgments about people based on very limited information.</p>
      </div>`,
     `<div style="margin-top: 100px; text-align: center;">
-       <p>You will use the slider to indicate your responses to both questions. Please click 'Next' to begin.</p>
+       <p>You will use a slider scale to indicate your responses to both questions. Please click 'Next' to begin.</p>
      </div>`
   ],
   show_clickable_nav: true

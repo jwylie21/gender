@@ -231,7 +231,8 @@ const infoTrial = {
     return `<p>Now imagine that the <b>average ${
         genderCondition === 'male' ? 'man' : 'woman'
       }</b> did the following action:</p>
-      <p><strong>${randomInfo}</strong></p>`;
+      <p><strong>${randomInfo}</strong></p>
+      <p>How morally good or bad do you think this person is?</p>`;
   },
   labels: ['Extremely morally bad', 'Neutral', 'Extremely morally good'],
   min: 0,

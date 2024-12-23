@@ -188,7 +188,7 @@ const instructions_step2 = {
   type: jsPsychInstructions,
   pages: [
     `<div style="margin-top: 100px; text-align: center;">
-       <p>Next, you will see an action. Please consider how this new information would affect your judgment of the person you just rated. The slider will start at your last rating.</p>
+       <p>Next, you will see an action. Please consider how this new information would affect your judgment of the person you just rated.</p> <p>The slider will start at your last rating.</p>
      </div>`
   ],
   show_clickable_nav: true

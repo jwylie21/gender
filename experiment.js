@@ -232,7 +232,7 @@ const infoTrial = {
         genderCondition === 'male' ? 'man' : 'woman'
       }</b> did the following action:</p>
       <p><strong>${randomInfo}</strong></p>
-      <p>How morally good or bad do you think this person is?</p>`;
+      <p>How morally good or bad do you think this person is now?</p>`;
   },
   labels: ['Extremely morally bad', 'Neutral', 'Extremely morally good'],
   min: 0,

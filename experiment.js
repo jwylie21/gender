@@ -90,58 +90,68 @@ const consentForm = {
       name: 'consent',
       prompt: `
             <p style="text-align:left;">
-            Informed Consent Form for IRB Study #2019-0338
-            Thank you for your interest in participating in our study!
-
-            You are being asked to participate in this research study because you are at 
-            least 18 years old and have self-selected to participate.
-            
+              You are being asked to participate in a research study titled 
+              "Social Judgment and Decision-Making." You were selected to participate in 
+              this project because you are an adult over age 18. This study is sponsored by 
+              Boston College and the John Templeton Foundation.
             </p>
             <p style="text-align: left;">
-            
-            The purpose of this research study is to test how social judgments interact with perception and cognition, 
-            and whether specific pieces of information influence social judgments. 
-            If you agree to participate, we will ask you to: (1) view a series of images, pictures, film clips, stories, 
-            newspaper articles, or write about a time from your past; (2) complete a cognitive task in which you will 
-            view a series of stimuli for a short period of time, recall or categorize them, sort pictures and words, 
-            visually search a display of letters, a word/letter recognition task, or solve puzzles; 
-            or (3) complete various personality, individual difference, and demographic questionnaires. In some cases, 
-            you will skip the first step and simply begin the cognitive task.
-            
+              The purpose of this study is to understand how we weigh information about 
+              others. This study will be conducted through this online survey. The survey 
+              should take you between 2-4 minutes to complete. There are no direct 
+              benefits to you, but you may feel gratified knowing that you helped further 
+              the scholarly work in this research area, and we will compensate you for your 
+              participation at a rate of about $9.00/hour. In some cases, we will ask you about 
+              your opinions; in other cases, we will ask you to try to answer questions and 
+              prompts accurately. When we ask for the latter, we will also provide 
+              additional compensation for each correct response. That rate will be $0.05 
+              per correct response. There are no costs to you associated with your 
+              participation.
             </p>
             <p style="text-align: left;">
-            This experiment will take less than 10 minutes. 
-            Participants do not receive compensation if they withdraw prior to completion 
-            of the experiment. We do not anticipate any possible risks. 
-            However, we will be presenting you with material that has emotional 
-            qualities that may induce discomfort when viewing such material.
-
+              The researchers do not believe participation would entail any risks or 
+              discomforts beyond those ordinarily encountered in everyday life.
             </p>
             <p style="text-align: left;">
-            The material may consist of scary animals, disgusting material, or repugnant material/themes/characters. 
-            If you decide to participate, the information recorded will remain confidential, 
-            and your identifying information will not be stored with your data.
+              This Principal Investigator, Dr. Liane Young, will exert all reasonable efforts 
+              to keep your responses and your identity confidential. We will not maintain 
+              within our research data any information that uniquely identifies you, such as 
+              your name, location, or Internet Protocol (IP) address. In any report we 
+              publish, we will not include any information that will make it possible to 
+              identify a participant. Data that includes user-ID information will be collected 
+              and stored via third-party servers like Qualtrics or Pavlovia. Data collected 
+              from the experiment will be coded to remove your name or any other 
+              personal identifiers. All records will be secured in a locked cabinet in our lab. 
+              The Institutional Review Board at Boston College and internal Boston College 
+              auditors may review the research records. State or federal laws or court 
+              orders may also require that information from research study records be 
+              released. Otherwise, the researchers will not release to others any 
+              information that could indicate your identity unless you give your permission, 
+              or unless the researchers become legally required to do so.
             </p>
             <p style="text-align: left;">
-
-            We will ask you general questions about your background, political beliefs, and other demographic data, 
-            but no sensitive information will be asked or recorded. 
-            The data is tied only to a non-descript subject ID, which will be the only subject identifying 
-            information that we will use during data analyses. 
-            Additionally, the websites used for data collection are password protected/encrypted.
-            </p>
-            
-            <p style="text-align: left;">
-            Your participation in this research is voluntary.
-
+              Although the survey will not prompt you directly to identify yourself by 
+              name, email address or the like, the survey will include several demographic 
+              items that would prompt you to provide certain demographic information, 
+              such as your age, gender, ethnicity, education level and the like. In 
+              combination, responses to such questions could suggest your identity. 
+              Regardless, please know that the researchers will make no purposeful effort 
+              to discern your identity based on such information. Additionally, please note 
+              that you may opt to leave any such questions blank.
             </p>
             <p style="text-align: left;">
-            
-            If you have any questions, please contact Ana Gantman at ana.gantman@brooklyn.cuny.edu. 
-            If you have any questions about your rights as a research participant or if you would 
-            like to talk to someone other than the researchers, you can contact CUNY Research 
-            Compliance Administrator at 646-664-8918 or HRPP@cuny.edu.
-
+              Your participation is voluntary. If you choose not to participate it will not 
+              affect your relations with Boston College. Some questions on the survey, 
+              such as comprehension questions, may be required in order to complete the 
+              survey and receive compensation. However, you may still choose to end 
+              your participation in the study at any time. If you have questions or concerns 
+              concerning this research you may contact the Principal Investigator at 
+              <a href="tel:16175520240">+1 (617) 552-0240</a>
+              or <a href="mailto:liane.young@bc.edu">liane.young@bc.edu</a>. If you have 
+              questions about your rights as a research participant, you may contact the
+              Office for Research Protections, Boston College, at 
+              <a href="tel:16175524778">+1 (617) 552-4778</a> or
+              <a href="mailto:irb@bc.edu">irb@bc.edu</a>.
             </p>
             <p style="text-align: left;">
               If you agree to the statements above and agree to participate in this study,

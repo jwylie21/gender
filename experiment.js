@@ -99,7 +99,7 @@ const consentForm = {
             <p style="text-align: left;">
               The purpose of this study is to understand how we weigh information about 
               others. This study will be conducted through this online survey. The survey 
-              should take you between 2-4 minutes to complete. There are no direct 
+              should take you about 2-3 minutes to complete. There are no direct 
               benefits to you, but you may feel gratified knowing that you helped further 
               the scholarly work in this research area, and we will compensate you for your 
               participation at a rate of about $9.00/hour. In some cases, we will ask you about 
@@ -569,7 +569,8 @@ const save_data = {
 
      jsPsych.endExperiment(
       `<p class="jspsych-center">
-         Thanks for participating! You will be redirected in <span id="countdown">5</span> seconds.
+         Thanks for participating! You will be redirected in <span id="countdown">5</span> second </p>
+         <p> DO NOT CLOSE OUT OF THIS PAGE BEFORE YOU ARE REDIRECTED.
        </p>`
      );
      setTimeout(function () {

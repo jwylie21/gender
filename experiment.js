@@ -33,20 +33,21 @@ jsPsych.data.addProperties({
 
 // Define New Information and Update Trial
 const newInformation = [
-  "Lied about a co-worker's poor work ethic to their boss for personal gain",
-  "Publicly mocked their sister for stuttering",
-  "Tried to steal clothes from a department store but got caught by security",
   "Is known for flirting with friends' partners",
-  "Lied to their employer about their productivity",
   "Lied to an investigator about a crime",
   "Initiated an argument with a friend in a crowded public space",
   "Feels entitled to a lot more than they get",
   "Lost their temper at the barista",
-  "Is known for pointing out everyone's shortcomings",
   "Refused to attend the funeral of a relative they disliked",
   "Never picks up after their dog while out on a walk",
   "Waited to the last moment to cancel plans with a friend"
 ];
+
+//"Tried to steal clothes from a department store but got caught by security",
+//"Lied about a co-worker's poor work ethic to their boss for personal gain",
+//"Publicly mocked their sister for stuttering",
+//"Is known for pointing out everyone's shortcomings",
+//"Lied to their employer about their productivity",
 
 // Political Ideology
 const politicalResponses = [

@@ -33,21 +33,81 @@ jsPsych.data.addProperties({
 
 // Define New Information and Update Trial
 const newInformation = [
-  "Is known for flirting with friends' partners",
-  "Lied to an investigator about a crime",
-  "Initiated an argument with a friend in a crowded public space",
-  "Feels entitled to a lot more than they get",
-  "Lost their temper at the barista",
-  "Refused to attend the funeral of a relative they disliked",
-  "Never picks up after their dog while out on a walk",
-  "Waited to the last moment to cancel plans with a friend"
+"Always leaves their air conditioner on all day while they're away at work",
+"Judged a person they just met based on their physical appearance",
+"Refused to help train their new coworker",
+"Lied to get off the phone with a relative",
+"Started an argument with a coworker",
+"Intentionally ignored a student's question during an exam review session",
+"Let their dog go to the bathroom on the neighbor's yard",
+"Thinks lying is okay if it doesn't seem likely to hurt anyone",
+"Stole their friend's umbrella during a rainstorm leaving them without one",
+"Lied to their employer about their productivity",
+"Swore at their roommate for eating their leftovers",
+"Dislikes spending time with people who have different opinions",
+"Was irritated when a neighbor asked to borrow some milk",
+"Refused to attend the funeral of a relative they disliked",
+"Shared a friend's embarrassing story at a dinner party",
+"Got into an argument with a friend",
+"Had a nasty interaction with a cashier",
+"Intentionally did not attend their best friend's birthday party",
+"Listens in and intrudes on other people's conversations",
+"Feels entitled to a lot more than they get",
+"Faked an injury to surpass a physical education requirement",
+"Neglected their pet dog",
+"Waited to the last moment to cancel plans with a friend",
+"Never picks up after their dog while out on a walk",
+"Broke a friend's CD because they did not like when they played the album",
+"Intentionally spilled their drink on their friend",
+"Went out of their way to ignore some new coworkers for several weeks",
+"Lied to an investigator about a crime",
+"Lost a friend's jacket at a party, but lied and said they had given it back already",
+"Developed a crush on their best friend's spouse",
+"Immediately started dating their best friend's ex",
+"Accidentally sent someone a text message bad-mouthing them",
+"Tried to access their mother's bank account to get money but accidentally got the account locked",
+"Scratched the family car and blamed it on their sibling",
+"Talked their coworkers into ostracizing a rival",
+"Started an argument with a coworker",
+"Drove their car the wrong way down a one-way street",
+"Dared a friend to shoplift during a game of Truth or Dare",
+"Chose not to tip at a restaurant",
+"Lied about a co-worker's poor work ethic to their boss for personal gain",
+"Lost their temper at the barista",
+"Did not attend their grandmother's funeral on purpose",
+"Publicly mocked their sister for stuttering",
+"Took a few bills from the register at work",
+"Tried to steal clothes from a department store but got caught by security",
+"Lost all of their company's money"
 ];
 
+
+//Pilot 1
+
+// "Is known for flirting with friends' partners",
+// "Lied to an investigator about a crime",
+// "Initiated an argument with a friend in a crowded public space",
+// "Feels entitled to a lot more than they get",
+// "Lost their temper at the barista",
+// "Refused to attend the funeral of a relative they disliked",
+// "Never picks up after their dog while out on a walk",
+// "Waited to the last moment to cancel plans with a friend"
 //"Tried to steal clothes from a department store but got caught by security",
 //"Lied about a co-worker's poor work ethic to their boss for personal gain",
 //"Publicly mocked their sister for stuttering",
 //"Is known for pointing out everyone's shortcomings",
 //"Lied to their employer about their productivity",
+
+//handpicked version (not run yet)
+
+//"Is known for flirting with friends' partners",
+//"Lied to an investigator about a crime",
+//"Initiated an argument with a friend in a crowded public space",
+//"Feels entitled to a lot more than they get",
+//"Lost their temper at the barista",
+//"Refused to attend the funeral of a relative they disliked",
+//"Never picks up after their dog while out on a walk",
+//"Waited to the last moment to cancel plans with a friend"
 
 // Political Ideology
 const politicalResponses = [
